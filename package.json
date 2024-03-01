@@ -3,16 +3,22 @@
   "version": "1.0.0",
   "description": "Backend for LexArt technical test",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo"
   },
   "dependencies": {
-    "express": "^4.18.3"
+    "express": "^4.18.3",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "babel-register": "^6.26.0",
+    "nodemon": "^3.1.0",
+    "sequelize-cli": "^6.6.2"
   }
 }
