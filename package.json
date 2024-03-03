@@ -2,10 +2,10 @@
   "name": "lexart-backend",
   "version": "1.0.0",
   "description": "Backend for LexArt technical test",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.ts",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo"
