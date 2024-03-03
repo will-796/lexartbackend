@@ -1,4 +1,4 @@
-const {productsService} = require('../services');
+const { productsService } = require("../services");
 
 const getAllProducts = async (req, res) => {
   try {
@@ -9,6 +9,22 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+const createProduct = async (req, res) => {
+  try {
+    if (!req.body || Object.keys(req.body).length === 0) {
+      return res.status(400).json({ message: "nao deve ser vazio" });
+    }
+    const payload = await productsService.createProduct(req.body);
+    if (payload.errors) {
+      return res.status(400).json({ message: payload.errors });
+    }
+    res.status(201).json(payload);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllProducts,
+  createProduct,
 };
