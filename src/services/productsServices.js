@@ -84,10 +84,35 @@ const findProductById = async (id) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
+
+const updateProduct = async (id, product) => {
+  try {
+    const productToUpdate = await Products.findByPk(id);
+    if (!productToUpdate) {
+      return {
+        errors: ["Produto não encontrado"],
+      };
+    }
+    const validationResult = validateByStructure(product, validateProduct);
+
+    if (validationResult.error) {
+      return {
+        errors: validationResult.error.details.map((error) => error.message),
+      };
+    }
+
+    await productToUpdate.update(product);
+
+    return productToUpdate;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 module.exports = {
   findAllProducts,
   createProduct,
-  findProductById
+  findProductById,
+  updateProduct,
 };
