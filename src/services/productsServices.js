@@ -110,9 +110,24 @@ const updateProduct = async (id, product) => {
   }
 };
 
+const deleteProduct = async (id) => {
+  try {
+    const product = await Products.findByPk(id);
+    if (!product) {
+      return {
+        errors: ["Produto não encontrado"],
+      };
+    }
+    await product.destroy();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 module.exports = {
   findAllProducts,
   createProduct,
   findProductById,
   updateProduct,
+  deleteProduct
 };
