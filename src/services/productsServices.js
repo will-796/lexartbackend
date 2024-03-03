@@ -78,7 +78,16 @@ const createProduct = async (product) => {
   }
 };
 
+const findProductById = async (id) => {
+  try {
+    return await Products.findByPk(id);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 module.exports = {
   findAllProducts,
   createProduct,
+  findProductById
 };
