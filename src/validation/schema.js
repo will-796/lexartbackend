@@ -36,12 +36,19 @@ const validateProductData = Joi.array().items(
   })
 );
 
+const validateUser = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
+});
+
 const validateByStructure = (data, structure) => {
   return structure.validate(data, { abortEarly: false });
 };
 
 
+
 module.exports = {
+  validateUser,
   validateProduct,
   validateProductDetails,
   validateProductData,
