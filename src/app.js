@@ -1,14 +1,19 @@
 const express = require("express");
 const routers = require("./routes");
 const cors = require("cors");
-require('dotenv').config();
-
+require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://lexartfrontend-p0ykseube-will796s-projects.vercel.app",
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type",
+  })
+);
 app.use(express.json());
-app.use(routers)
+app.use(routers);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
