@@ -14,7 +14,7 @@ const authenticateJWT = (req, res, next) => {
 
     next();
   } catch (error) {
-    return res.status(403).json({ message: 'Falha na autenticação do token' });
+    return res.status(401).json({ message: 'Falha na autenticação do token' });
   }
 };
 
