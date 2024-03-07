@@ -5,13 +5,20 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: [
-      "https://lexartfrontend-p0ykseube-will796s-projects.vercel.app",
-      "http://localhost:5173",
-    ],
-  })
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  app.use(cors());
+  next();
+}
+
 );
 app.use(express.json());
 app.use(routers);
