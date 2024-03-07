@@ -1,13 +1,5 @@
 require("dotenv").config();
 
-console.log(
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
-  process.env.DB_NAME,
-  process.env.DB_HOST,
-  process.env.PORT,
-  process.env.DB_DIALECT
-);
 
 let config = {
   username: process.env.DB_USERNAME,
@@ -16,6 +8,7 @@ let config = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT,
+  dialectModule: require("pg"),
   migrationStorageTableName: "sequelize_migrations",
   seederStorageTableName: "sequelize_seeds",
   dialectOptions: {
