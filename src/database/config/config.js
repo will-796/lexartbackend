@@ -8,7 +8,13 @@ let config = {
     port: dotenv.DB_PORT,
     dialect: dotenv.DB_DIALECT,
     migrationStorageTableName: "sequelize_migrations",
-    seederStorageTableName: "sequelize_seeds"
+    seederStorageTableName: "sequelize_seeds",
+    dialectOptions: {
+      ssl: {
+          require: true,
+          rejectUnauthorized: false
+      }
+  }
 };
 
 module.exports = {
